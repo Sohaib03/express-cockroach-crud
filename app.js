@@ -1,10 +1,16 @@
 const express = require("express");
 const {connect} = require("./repo/db");
+const {getUsers, getUserByEmail} = require("./repo/users"); 
 
 const app = express();
 const port = process.env.PORT || 3001;
 
-app.get("/", (req, res) => {
+app.use(express.json());
+
+app.use("/user" , require("./routes/users"));
+app.use("/blog" , require("./routes/blogs"));
+
+app.get("/", async (req, res) => {
   res.send("Hello world!");
 });
 

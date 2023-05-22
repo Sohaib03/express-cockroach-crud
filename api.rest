@@ -1,0 +1,33 @@
+GET http://localhost:3001/user
+
+###
+
+POST http://localhost:3001/user/login
+Content-Type: application/json
+
+{
+    "username": "Sohaib",
+    "password": "123456"
+
+}
+
+###
+POST http://localhost:3001/blog/create
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiODQ1MjY4NjQxODU1NjM1NDU3IiwidXNlcm5hbWUiOiJTb2hhaWIiLCJwYXNzd29yZCI6IjEyMzQ1NiIsImVtYWlsIjoic29oYWliQGdtYWlsLmNvbSIsImNyZWF0ZWRfb24iOiIyMDIzLTAzLTA1VDA4OjE4OjM4LjEzNloiLCJpYXQiOjE2ODQzNTI4MTB9.ETYOSuWhpBzUYDyXKQ_cPOY9rEyPBsSxgtlZvWb097c
+Content-Type: application/json
+
+{
+    "title": "My first blog",
+    "description": "This is my first blog",
+    "content": "Lorem ipsum dolor sit amet, consec tetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat"
+}
+
+### 
+GET http://localhost:3001/blog/recents
+
+###
+GET http://localhost:3001/blog/12
+
+###
+
+GET http://localhost:3001/health

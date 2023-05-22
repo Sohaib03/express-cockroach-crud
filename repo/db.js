@@ -1,20 +1,32 @@
 require('dotenv').config();
 
-const { Client } = require("pg");
-const client = new Client(process.env.DATABASE_URL);
+const { Pool, Client } = require("pg");
+
+const connectionString = process.env.DATABASE_URL;
+const pool = new Pool({
+  connectionString, 
+});
 
 async function connect() {
-  await client.connect();
   try {
-    const results = await client.query("SELECT NOW()");
+    const results = await pool.query("SELECT NOW()");
     return results.rows[0].now;
   } catch (err) {
     console.error("error executing query:", err);
-  } finally {
-    client.end();
   }
 }
 
+async function runQuery(query) {
+  try {
+    const results = await pool.query(query);
+    return results.rows;
+  } catch (err) {
+    console.error("error executing query:", err);
+  } 
+}
+
+
 module.exports = {
     connect,
+    runQuery,
 };
